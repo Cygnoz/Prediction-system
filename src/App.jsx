@@ -9,6 +9,7 @@ function App() {
 
       <button>predict</button>
       <button>test</button>
+      <button>s</button>
      
     </div>
   );
