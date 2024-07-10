@@ -1,0 +1,45 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+  }
+  .main{
+    display: flex;
+  }
+  main{
+    
+    width: 100%;
+    padding: 20px;
+  }
+  .sidebar{
+    background-color: rgb(41,40,91);
+    color: white;
+    height: 100vh;
+    width: 18%;
+  }
+  .topheading{
+    align-items: center;
+    text-align: center;
+    margin: 35px 20px 30px;
+    
+  
+  }
+  .link{
+    background-color: rgb(39,38,70);
+    margin: 20px;
+    border-radius: 20px;
+    display: flex;
+    color: rgb(255, 255, 255);
+    padding: 10px 15px;
+    gap:  15px;
+    transition: all .5s;
+  }
+  .link:hover{
+    background: rgb(131,129,200);
+    color: white;
+    transition: all .5s;
+  }
+  .active{
+    background: rgb(131,129,200);
+    color: white;
+  }
