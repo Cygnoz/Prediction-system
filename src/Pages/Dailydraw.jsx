@@ -42,7 +42,7 @@ function Dailydraw() {
       
       <div className='numbermain shadow'>
       <MDBContainer >
-      <MDBRow style={{marginLeft:'55px'}} >
+      <MDBRow style={{marginLeft:'20px'}} >
         <MDBCol  md='1'  className='number m-5 rounded-5'>
            <p>18</p>
         </MDBCol>
@@ -50,16 +50,16 @@ function Dailydraw() {
            <p>18</p>
         </MDBCol>
         <MDBCol md='1'  className='number rounded-5 m-5'>
-           <p>18</p>     
+           <p>19</p>     
          </MDBCol>
         <MDBCol md='1'  className='number rounded-5 m-5'>
            <p>18</p>       
         </MDBCol>
         <MDBCol md='1'  className='number rounded-5 m-5'>
-           <p>18</p>       
+           <p>28</p>       
         </MDBCol>
       </MDBRow>
-      <MDBRow style={{marginLeft:'55px'}}>
+      <MDBRow style={{marginLeft:'20px'}}>
         <MDBCol  md='1'  className='number rounded-5 m-5'>
            <p>18</p>        
         </MDBCol>

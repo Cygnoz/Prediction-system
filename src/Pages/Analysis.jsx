@@ -29,12 +29,12 @@ function Analysis() {
     </div>
     <div>
      
-      <MDBCard className='mt-5' style={{height:"90px", width:'300px', backgroundColor:"white", marginLeft:'80px', borderRadius:'20px'}}>
+      <MDBCard className='mt-5' style={{height:"90px", width:'300px', backgroundColor:"white", marginLeft:'30px', borderRadius:'20px'}}>
       <MDBCardBody>
         <MDBCardTitle className='text-center mt-2'> <AccessTimeIcon sx={{ fontSize: 30 }} className='me-3'/>Daily Draw's</MDBCardTitle>       
       </MDBCardBody>
     </MDBCard></div>
-    <div><MDBCard className='mt-5' style={{height:"90px", width:'300px', backgroundColor:"white",marginLeft:"150px", borderRadius:'20px'}}>
+    <div><MDBCard className='mt-5' style={{height:"90px", width:'300px', backgroundColor:"white",marginLeft:"60px", borderRadius:'20px'}}>
       <MDBCardBody>
         <MDBCardTitle className='text-center mt-2'> <QueryStatsIcon sx={{ fontSize: 30 }} className='me-3'/>Analyser</MDBCardTitle>
        
@@ -48,7 +48,7 @@ function Analysis() {
     <div className='mt-5'>
     <h5 className='ms-3 mt-4'>All Draw's</h5>
     </div>
-    <div className='' style={{margin:'70px', marginLeft:'180px'}}>
+    <div className='' style={{marginTop:'20px', marginLeft:'10%'}}>
     <MDBCard className='text-center' style={{height:"350px", width:'550px', backgroundColor:"white", marginLeft:"200px"}}>
       <MDBCardBody>
         <MDBCardTitle>

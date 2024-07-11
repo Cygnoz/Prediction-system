@@ -3,7 +3,7 @@ MDBCardTitle, h2 , h5{
 }
 .draws{
     display: flex;
-    margin-left: 10%;
+    margin-left: 8%;
     margin-bottom: 50px;
     margin-top: 20px;
 }
@@ -11,12 +11,12 @@ MDBCardTitle, h2 , h5{
     border-radius: 20px;
     background-color: white;
     width: 70%;
-    margin-left: 14%;
-    margin-top: 3%;
+    margin-left: 15%;
+    margin-top: 1%;
 }
 .number{
     background-color: rgb(215,215,215);
-    height: 85px;
+    height: 80px;
 }
 .drawcard{
     height: 170px;
