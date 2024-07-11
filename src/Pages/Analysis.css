@@ -1,64 +1,4 @@
-/* .Analysis{
-    display: flex;
-    font-family: Arial, sans-serif;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f3f3f3;
-  }
-  
-  .main-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 600px;
-  }
-  
-  h1 {
-    font-size: 24px;
-    color: #2b3a42;
-    text-align: center;
-  }
-  
-  .buttons-container {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .main-button, .add-draw-button {
-    background-color: #2b3a42;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 5px;
-    font-size: 16px;
-  }
-  
-  .main-button:hover, .add-draw-button:hover {
-    background-color: #3c4a52;
-  }
-  
-  .add-draw-button {
-    display: block;
-    margin: 10px auto 20px auto;
-  }
-  
-  .date-picker {
-    background-color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    display: inline-block;
-    font-size: 16px;
-    text-align: center;
-    width: 100%;
-    border: 1px solid #ddd;
-  } */
-  
+
   .draws-table {
     width: 100%;
     border-collapse: collapse;
@@ -73,12 +13,10 @@
     font-size: 16px;
   }
   
-  /* .draws-table th {
-    background-color:white;
-    color: white;
-  } */
-  
   .draws-table td {
     text-align: center;
   }
   
+  h5{
+    color: rgb(41,40,91);
+  }

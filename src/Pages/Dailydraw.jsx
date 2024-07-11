@@ -5,38 +5,81 @@ import {
     MDBCardBody,
     MDBCardTitle,
     MDBCardText,
-    MDBBtn
+    MDBBtn,
+    MDBContainer, MDBRow, MDBCol
   } from 'mdb-react-ui-kit';
-
 function Dailydraw() {
   return (
     <div>
-        <h2 className='mt-5 ms-3'>Draws</h2>
-       <div className='d-flex  ms-5'>
-        <div><MDBCard className='m-4' style={{height:"200px", width:'350px', backgroundColor:"rgb(236, 230, 230)"}}>
-      <MDBCardBody>
-        <MDBCardTitle>First Draw</MDBCardTitle>
+        <h2 className='mt-5 ms-4'>Draws</h2>
+       <div  className='draws'>
+        <div>
+          <MDBCard  style={{borderRadius:'20px'}} className=' ms-5 '>
+      <MDBCardBody   className='drawcard active'>
+        <MDBCardTitle className='text-center mt-5'>First Draw</MDBCardTitle>
        
       </MDBCardBody>
     </MDBCard>
     
     </div>
-    <div><MDBCard className='m-4' style={{height:"200px", width:'350px', backgroundColor:"rgb(236, 230, 230)"}}>
-      <MDBCardBody>
-        <MDBCardTitle>Second Draw</MDBCardTitle>
+    <div>
+      <MDBCard style={{borderRadius:'20px'}}  className='ms-5' >
+      <MDBCardBody className='drawcard'>
+        <MDBCardTitle className='text-center mt-5'>Second Draw</MDBCardTitle>
        
       </MDBCardBody>
     </MDBCard></div>
-    <div><MDBCard className='m-4' style={{height:"200px", width:'350px', backgroundColor:"rgb(236, 230, 230)"}}>
-      <MDBCardBody>
-        <MDBCardTitle style={{ textAlign:'center', justifyContent:'center'}}>Third Draw</MDBCardTitle>
+    <div><MDBCard style={{borderRadius:'20px'}}  className='ms-5'>
+      <MDBCardBody className='drawcard'>
+        <MDBCardTitle className='text-center m-5'>Third Draw</MDBCardTitle>
        
       </MDBCardBody>
     </MDBCard>
     </div>
     </div>
-    <h5 ms-3>Your Lucky Number's</h5>
-        
+    <div>
+      <h5 className='ms-4 mt-4'>Your Lucky Number's</h5>
+      
+      <div className='numbermain shadow'>
+      <MDBContainer >
+      <MDBRow style={{marginLeft:'55px'}} >
+        <MDBCol  md='1'  className='number m-5 rounded-5'>
+           <p>18</p>
+        </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+           <p>18</p>
+        </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+           <p>18</p>     
+         </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+           <p>18</p>       
+        </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+           <p>18</p>       
+        </MDBCol>
+      </MDBRow>
+      <MDBRow style={{marginLeft:'55px'}}>
+        <MDBCol  md='1'  className='number rounded-5 m-5'>
+           <p>18</p>        
+        </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+           <p>18</p>       
+        </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+         <p>18</p>        
+        </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+         <p>18</p>        
+        </MDBCol>
+        <MDBCol md='1'  className='number rounded-5 m-5'>
+         <p>18</p>        
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+      </div>
+
+    </div>        
     </div>
     
   )

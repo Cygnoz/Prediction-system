@@ -1,3 +1,40 @@
-MDBCardTitle, h2{
+MDBCardTitle, h2 , h5{
     color: rgb(41,40,91);
+}
+.draws{
+    display: flex;
+    margin-left: 10%;
+    margin-bottom: 50px;
+    margin-top: 20px;
+}
+.numbermain{
+    border-radius: 20px;
+    background-color: white;
+    width: 70%;
+    margin-left: 14%;
+    margin-top: 3%;
+}
+.number{
+    background-color: rgb(215,215,215);
+    height: 85px;
+}
+.drawcard{
+    height: 170px;
+    width: 300px; 
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+.drawcard:hover{
+    border: solid 2px rgb(41,40,91);
+    border-radius: 20px;
+
+
+}
+.active{
+    border: solid 2px rgb(41,40,91);
+    border-radius: 20px;
+
+
 }
