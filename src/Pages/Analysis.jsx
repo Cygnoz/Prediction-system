@@ -20,7 +20,8 @@ Add Draw
       </div>
 
        <div className='d-flex  ms-5'>
-        <div> <MDBCard className='ms-3 mt-5 me-5' style={{height:"90px", width:'250px', backgroundColor:"rgb(236, 230, 230)", borderRadius:'20px'}}>
+        <div> 
+          <MDBCard className='ms-3 mt-5 me-5' style={{height:"90px", width:'250px', backgroundColor:"rgb(236, 230, 230)", borderRadius:'20px'}}>
       <MDBCardBody>
         <MDBCardTitle className='text-center mb-2'> <i class="fa-solid fa-list me-3 mt-1 fs-3"></i>Result</MDBCardTitle>
        
@@ -28,13 +29,17 @@ Add Draw
     </MDBCard>
     
     </div>
-    <div><MDBCard className='mt-5' style={{height:"90px", width:'250px', backgroundColor:"rgb(236, 230, 230)", marginLeft:'80px', borderRadius:'20px'}}>
+    <div>
+      <MDBCard className='mt-5' style={{height:"90px", width:'250px', backgroundColor:"rgb(236, 230, 230)", marginLeft:'80px', borderRadius:'20px'}}>
       <MDBCardBody>
         <MDBCardTitle className='text-center mb-2'> <i class="fa-regular fa-clock me-3 mt-1 fs-3"></i>Daily Draw's</MDBCardTitle>
        
       </MDBCardBody>
-    </MDBCard></div>
-    <div><MDBCard className='mt-5' style={{height:"90px", width:'250px', backgroundColor:"rgb(236, 230, 230)",marginLeft:"150px", borderRadius:'20px'}}>
+    </MDBCard>
+    </div>
+
+    <div>
+      <MDBCard className='mt-5' style={{height:"90px", width:'250px', backgroundColor:"rgb(236, 230, 230)",marginLeft:"150px", borderRadius:'20px'}}>
       <MDBCardBody>
         <MDBCardTitle className='text-center mb-2'><i class="fa-regular fa-clock me-3 mt-1 fs-3"></i>Analyser</MDBCardTitle>
        
@@ -50,8 +55,7 @@ Add Draw
       <MDBCardBody>
         <MDBCardTitle>
               <div>
-              <input className='w-50' placeholder='          Select from & to date' type="text" style={{borderRadius:'20px', marginLeft:'-450px', height:'35px', backgroundColor:"rgb(236, 230, 230)", fontSize:'medium'}} />
-              <i style={{marginLeft:'-230px'}} class="fa-regular fa-calendar"></i>
+              <input className='w-50' placeholder='          Select from & to date' type="date" style={{borderRadius:'20px', marginLeft:'-245px', height:'35px', backgroundColor:"rgb(236, 230, 230)", fontSize:'medium'}} />
             </div>
         </MDBCardTitle>
         <table className="draws-table">
