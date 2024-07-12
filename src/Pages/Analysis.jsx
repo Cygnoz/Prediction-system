@@ -89,6 +89,80 @@ function Analysis() {
     </MDBCard>
     </div>
 
+    <div className='' style={{marginTop:'20px', marginLeft:'10%'}}>
+    <MDBCard className='text-center' style={{height:"350px", width:'550px', backgroundColor:"white", marginLeft:"200px"}}>
+      <MDBCardBody>
+        <MDBCardTitle>
+        </MDBCardTitle>
+        <table className="draws-table">
+          <thead>
+            <tr style={{backgroundColor:'rgb(215,215,215)'}}>
+              <th>First Draw</th>
+              <th>Second Draw</th>
+              <th>Third Draw</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>77</td>
+              <td>46</td>
+              <td>90</td>
+            </tr>
+            <tr>
+              <td>35</td>
+              <td>67</td>
+              <td>12</td>
+            </tr>
+          </tbody>
+        </table>
+
+       
+      </MDBCardBody>
+    </MDBCard>
+    </div>
+
+    <div className='' style={{marginTop:'20px', marginLeft:'10%'}}>
+    <MDBCard className='text-center' style={{height:"350px", width:'550px', backgroundColor:"white", marginLeft:"200px"}}>
+      <MDBCardBody>
+        <MDBCardTitle>
+        </MDBCardTitle>
+        <table className="draws-table">
+          <thead>
+            <tr style={{backgroundColor:'rgb(215,215,215)'}}>
+              <th>Draws</th>
+              <th>Predicted Result</th>
+              <th>Actual Result</th>
+              <th>Accuracy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First Draw</td>
+              <td>77</td>
+              <td>46</td>
+              <td>90</td>
+            </tr>
+            <tr>
+              <td>Second Draw</td>
+              <td>35</td>
+              <td>67</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>Third Draw</td>
+              <td>35</td>
+              <td>67</td>
+              <td>12</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+       
+      </MDBCardBody>
+    </MDBCard>
+    </div>
+
     </div>
   )
 }
