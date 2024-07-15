@@ -11,9 +11,7 @@ import {
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-//import {
-   // MDBBtn,
-  // } from 'mdb-react-ui-kit';
+
 function AddDraw() {
 
   const [centredModal, setCentredModal] = useState(false);
@@ -27,35 +25,61 @@ function AddDraw() {
 
       <MDBModal tabIndex='-1' open={centredModal} onClose={() => setCentredModal(false)}>
         <MDBModalDialog centered>
-          <MDBModalContent>
+          <MDBModalContent className='shadow'  style={{border:'2px solid rgb(41,40,91)', borderRadius:"15px"}}>
             <MDBModalHeader>
               <MDBModalTitle>Add Draws</MDBModalTitle>
               <MDBBtn className='btn-close' color='none' onClick={toggleOpen}></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
+              <div>
               <p>
-                <h4>Date</h4>
+              Date :         
+              </p>
               <div>
-              <input className='w-50' placeholder='          Select from & to date' type="date" style={{borderRadius:'20px',padding:'10px',  backgroundColor:"rgb(236, 230, 230)", fontSize:'medium'}} />
+              <input className='w-50' style={{borderRadius:'20px', padding:"0px 10px 0px 10px", backgroundColor:'rgb(215, 215, 215)', color:'rgb(41,40,91)'}}  type="date"  />
             </div>
-              </p>
-              <p className='d-flex' style={{}}>
-              <p className='ms-3'>First Draw</p>
-              <p className='ms-5'>Second Draw</p>
-              <p className='ms-5'>Third Draw</p>
-              </p>
-              
-              <div>
-                <input className='w-25 ms-2' style={{borderRadius:'10px'}} type="text" placeholder=' First Draw'/>
-                <input className='w-25 ms-3'  style={{borderRadius:'10px'}}  type="text" placeholder=' Second Draw'/>
-                <input className='w-25 ms-3'  style={{borderRadius:'10px'}}  type="text" placeholder=' Third Draw'/>
+
               </div>
+              <div style={{display:'flex' }} className='mt-4 mb-3'>
+                <div >
+                <p>
+              First Draw :         
+              </p>
+              <div>
+              <input className='' placeholder='First Draw' style={{borderRadius:'20px', padding:"0px 10px 0px 10px", backgroundColor:'rgb(215, 215, 215)', color:'rgb(41,40,91)', width:"140px"}}  type="number"  />
+               </div>
+              </div>
+
+              <div className='ms-3'>
+                <p>
+                Second Draw :         
+              </p>
+              <div>
+              <input className='' placeholder='Second Draw' style={{borderRadius:'20px', padding:"0px 10px 0px 10px", backgroundColor:'rgb(215, 215, 215)', color:'rgb(41,40,91)', width:"140px"}}  type="number"  />
+            </div>
+                </div>
+
+                <div className='ms-3'>
+                <p>
+                Third Draw :         
+              </p>
+              <div >
+              <input className='' placeholder='Third Draw' style={{borderRadius:'20px', padding:"0px 10px 0px 10px", backgroundColor:'rgb(215, 215, 215)', color:'rgb(41,40,91)',width:"140px"}}  type="number"  />
+            </div>
+                </div>   
+              </div>
+              
+              
+             
+            
+              
+             
             </MDBModalBody>
             <MDBModalFooter>
-              <MDBBtn color='secondary' onClick={toggleOpen}>
+              <MDBBtn style={{color:'rgb(41,40,91)'}} color='secondary' onClick={toggleOpen}>
                 Cancel
               </MDBBtn>
-              <MDBBtn>Save</MDBBtn>
+              <MDBBtn  style={{backgroundColor:'rgb(41,40,91)'}}>Save</MDBBtn>
             </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>

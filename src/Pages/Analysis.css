@@ -1,22 +1,48 @@
+.draws-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 5px;
+}
 
-  .draws-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    /* background-color: white; */
-    border-radius: 5px;
-  }
-  
-  .draws-table th, .draws-table td {
+.draws-table th, .draws-table td {
+  padding: 8px;
+  font-size: 16px;
+}
 
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .draws-table td {
-    text-align: center;
-  }
-  
-  h5{
-    color: rgb(41,40,91);
-  }
+.draws-table td {
+  text-align: center;
+}
+
+h5 {
+  color: rgb(41,40,91);
+}
+
+.draw {
+  border: 1px solid gray; 
+  background-color: rgb(252, 250, 250);
+} 
+
+.draw:hover {
+  border: solid 2px rgb(41,40,91);
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.active-draw {
+  border: 2px solid rgb(41,40,91) !important; 
+  background-color: rgb(255, 255, 255) !important;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.Draws {
+  display: flex;
+}
+
+.tables {
+  margin-top: 20px;
+  margin-left: 10%;
+}
