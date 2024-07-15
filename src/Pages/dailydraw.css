@@ -1,4 +1,4 @@
-MDBCardTitle, h2 , h5 ,h6{
+MDBCardTitle, h2 , h5 ,h6 ,p{
     color: rgb(41,40,91);
 }
 h6{
@@ -13,14 +13,29 @@ h6{
 .contents{
     border-radius: 20px;
     background-color: white;
-    width: 70%;
+    width: 65%;
+    height: 50%;
     margin-left: 15%;
-    margin-top: 1%;
+    
 }
+
 .number{
     background-color: rgb(215,215,215);
+    width: 100px;
     height: 80px;
     cursor: pointer;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 15px;
+}
+.number:hover{
+    border: solid 2px   rgb(41,40,91);;
+}
+
+.numbers{
+   margin-left: 7%;
+  
+   
 }
 .tab{
     height: 170px;
@@ -40,5 +55,5 @@ h6{
     background-color: rgb(255, 255, 255);
 }
 .content{
-    margin-left: 0px;
+   margin-top: 10px;
 }

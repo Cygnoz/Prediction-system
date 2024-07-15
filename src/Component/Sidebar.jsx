@@ -6,7 +6,7 @@ function Sidebar({children}) {
     const MenuItem=[
         {
             path:"/",
-            name:"Daily",
+            name:"Daily Draw",
             icon: <AccessTimeIcon/>,
         }, 
         {
