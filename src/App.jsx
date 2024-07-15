@@ -4,6 +4,7 @@ import './App.css';
 import Sidebar from './Component/Sidebar';
 import Dailydraw from './Pages/Dailydraw';
 import Analysis from './Pages/Analysis';
+import Login from './Pages/Login';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Dailydraw/>}/>
         <Route path='/analysis' element={<Analysis/>}/>
+        <Route path='/login' element={<Login/>}/>
+
       </Routes>
       </Sidebar>
     </div>

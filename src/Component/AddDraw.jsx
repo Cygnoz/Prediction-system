@@ -36,8 +36,7 @@ function AddDraw() {
               <p>
                 <h4>Date</h4>
               <div>
-              <input className='w-50' placeholder='          Select from & to date' type="text" style={{borderRadius:'20px',  backgroundColor:"rgb(236, 230, 230)", fontSize:'medium'}} />
-              <i style={{marginLeft:'10px'}} class="fa-regular fa-calendar"></i>
+              <input className='w-50' placeholder='          Select from & to date' type="date" style={{borderRadius:'20px',padding:'10px',  backgroundColor:"rgb(236, 230, 230)", fontSize:'medium'}} />
             </div>
               </p>
               <p className='d-flex' style={{}}>
