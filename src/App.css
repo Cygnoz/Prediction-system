@@ -1,45 +1,72 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none;
-  }
-  .main{
-    display: flex;
-  }
-  main{
-    background-color: rgb(215,215,215);
-    width: 100%;
-    padding: 20px;
-  }
-  .sidebar{
-    background-color: rgb(41,40,91);
-    color: white;
-    height: 100vh;
-    width: 18%;
-  }
-  .topheading{
-    align-items: center;
-    text-align: center;
-    margin: 35px 20px 30px;
-    
-  
-  }
-  .link{
-    background-color: rgb(39,38,70);
-    margin: 20px;
-    border-radius: 20px;
-    display: flex;
-    color: rgb(255, 255, 255);
-    padding: 10px 15px;
-    gap:  15px;
-    transition: all .5s;
-  }
-  .link:hover{
-    background: rgb(131,129,200);
-    color: white;
-    transition: all .5s;
-  }
-  .active{
-    background: rgb(131,129,200);
-    color: white;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body, html, .App {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  display: flex;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+}
+
+main {
+  background-color: rgb(215, 215, 215);
+  flex: 1;
+  padding: 20px;
+}
+
+.sidebar {
+  background-color: rgb(41, 40, 91);
+  color: white;
+  height: 100vh;
+  width: 18%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topheading {
+  align-items: center;
+  text-align: center;
+  margin: 35px 20px 30px;
+}
+
+.link {
+  background-color: rgb(39, 38, 70);
+  margin: 20px;
+  border-radius: 20px;
+  display: flex;
+  color: white;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.5s;
+}
+
+.link:hover {
+  background: rgb(131, 129, 200);
+  color: white;
+  transition: all 0.5s;
+}
+
+.active {
+  background: rgb(131, 129, 200);
+  color: white;
+}
+
+.full-content {
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-color: rgb(215, 215, 215);
+}
