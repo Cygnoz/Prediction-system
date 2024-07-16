@@ -77,7 +77,11 @@ function Dailydraw() {
         {[1, 2, 3].map((tabIndex) => (
           <MDBCard key={tabIndex} style={{ borderRadius: '20px' }} className='ms-5'>
             <MDBCardBody onClick={() => action(tabIndex)} className={`tab ${state === tabIndex ? 'active-tab' : ''}`}>
-              <MDBCardTitle className='text-center mt-5'>{`${tabIndex === 1 ? 'First' : tabIndex === 2 ? 'Second' : 'Third'} Draw`}</MDBCardTitle>
+            <MDBCardTitle className='text-center mt-5'>
+              {`${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}`}
+              <br /><br/>
+              {`${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}`}
+            </MDBCardTitle>
             </MDBCardBody>
           </MDBCard>
         ))}
