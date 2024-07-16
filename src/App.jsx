@@ -8,7 +8,7 @@ import Login from './Pages/Login';
 
 function App() {
   const location = useLocation();
-  const showSidebar = location.pathname !== '/login';
+  const showSidebar = location.pathname !== '/';
 
   return (
     <div className="App">
@@ -16,7 +16,7 @@ function App() {
         <div className="main">
           <Sidebar>
             <Routes>
-              <Route path='/' element={<Dailydraw />} />
+              <Route path='/home' element={<Dailydraw />} />
               <Route path='/analysis' element={<Analysis />} />
             </Routes>
           </Sidebar>
@@ -24,7 +24,7 @@ function App() {
       ) : (
         <div className="full-content">
           <Routes>
-            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<Login />} />
           </Routes>
         </div>
       )}
