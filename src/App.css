@@ -28,7 +28,7 @@ main {
 .sidebar {
   background-color: rgb(41, 40, 91);
   color: white;
-  height: 100vh;
+  height: 100%;
   width: 17%;
   display: flex;
   flex-direction: column;

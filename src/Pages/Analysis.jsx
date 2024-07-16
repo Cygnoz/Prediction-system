@@ -75,7 +75,7 @@ function Analysis() {
 
       <div className="tables">
         {state === 1 && (
-          <MDBCard className='text-center' style={{ height: "350px", width: '550px', backgroundColor: "white", marginLeft: "200px" }}>
+          <MDBCard className='text-center' style={{ height: "450px", width: '550px', backgroundColor: "white", marginLeft: "200px" }}>
             <MDBCardBody className='table active-table'>
               <MDBCardTitle>
               All Draw
@@ -111,7 +111,7 @@ function Analysis() {
           </MDBCard>
         )}
         {state === 2 && (
-          <MDBCard className='text-center' style={{ height: "350px", width: '550px', backgroundColor: "white", marginLeft: "200px" }}>
+          <MDBCard className='text-center' style={{ height: "450px", width: '550px', backgroundColor: "white", marginLeft: "200px" }}>
             <MDBCardBody className='table'>
               <MDBCardTitle>Daily Draw</MDBCardTitle>
               <table className="draws-table">
@@ -139,12 +139,13 @@ function Analysis() {
           </MDBCard>
         )}
         {state === 3 && (
-          <MDBCard className='text-center' style={{ height: "350px", width: '550px', backgroundColor: "white", marginLeft: "200px" }}>
+          <MDBCard className='text-center' style={{ height: "100%", width: '800px', backgroundColor: "white", marginLeft: "200px" }}>
             <MDBCardBody className='table'>
               <MDBCardTitle>Analysis</MDBCardTitle>
               <table className="draws-table">
                 <thead>
                   <tr style={{ backgroundColor: 'rgb(215,215,215)' }}>
+                    <th>Date</th>
                     <th>Draws</th>
                     <th>Predicted Result</th>
                     <th>Actual Result</th>
@@ -153,23 +154,55 @@ function Analysis() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>First Draw</td>
-                    <td>77</td>
-                    <td>46</td>
+                    <td>04-08-2023</td>
+                    <td>First Draw <br />Second Draw <br />Third Draw</td>
+                    <td>35,12,12,23, 23,23,23,43,54,65<br />35,12,12,23, 23, 23,23,43,54,65 <br />35,12,12,23, 23,23,23,43,54,65</td>
+                    <td>46 <br />56 <br /> 88</td>
+                    <td>90</td>
+                  </tr>
+
+                  <tr>
+                    <td>04-08-2023</td>
+                    <td>First Draw <br />Second Draw <br />Third Draw</td>
+                    <td>35,12,12,23, 23,23,23,43,54,65<br />35,12,12,23, 23, 23,23,43,54,65 <br />35,12,12,23, 23,23,23,43,54,65</td>
+                    <td>46 <br />56 <br /> 88</td>
+                    <td>90</td>
+                  </tr>
+
+                  <tr>
+                    <td>04-08-2023</td>
+                    <td>First Draw <br />Second Draw <br />Third Draw</td>
+                    <td>35,12,12,23, 23,23,23,43,54,65<br />35,12,12,23, 23, 23,23,43,54,65 <br />35,12,12,23, 23,23,23,43,54,65</td>
+                    <td>46 <br />56 <br /> 88</td>
                     <td>90</td>
                   </tr>
                   <tr>
-                    <td>Second Draw</td>
-                    <td>35</td>
-                    <td>67</td>
-                    <td>12</td>
+                    <td>04-08-2023</td>
+                    <td>First Draw <br />Second Draw <br />Third Draw</td>
+                    <td>35,12,12,23, 23,23,23,43,54,65<br />35,12,12,23, 23, 23,23,43,54,65 <br />35,12,12,23, 23,23,23,43,54,65</td>
+                    <td>46 <br />56 <br /> 88</td>
+                    <td>90</td>
+                  </tr>
+
+                  <tr>
+                    <td>04-08-2023</td>
+                    <td>First Draw <br />Second Draw <br />Third Draw</td>
+                    <td>35,12,12,23, 23,23,23,43,54,65<br />35,12,12,23, 23, 23,23,43,54,65 <br />35,12,12,23, 23,23,23,43,54,65</td>
+                    <td>46 <br />56 <br /> 88</td>
+                    <td>90</td>
                   </tr>
                   <tr>
-                    <td>Third Draw</td>
-                    <td>35</td>
-                    <td>67</td>
-                    <td>12</td>
+                    <td>04-08-2023</td>
+                    <td>First Draw <br />Second Draw <br />Third Draw</td>
+                    <td>35,12,12,23, 23,23,23,43,54,65<br />35,12,12,23, 23, 23,23,43,54,65 <br />35,12,12,23, 23,23,23,43,54,65</td>
+                    <td>46 <br />56 <br /> 88</td>
+                    <td>90</td>
                   </tr>
+                  
+
+                  
+    
+                  
                 </tbody>
               </table>
             </MDBCardBody>
