@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 function Sidebar({children}) {
     const MenuItem=[
         {
-            path:"/",
+            path:"/home",
             name:"Daily Draw",
             icon: <AccessTimeIcon/>,
         }, 
