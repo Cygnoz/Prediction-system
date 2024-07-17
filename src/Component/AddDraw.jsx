@@ -27,6 +27,9 @@ function AddDraw() {
     const dateObj = new Date(date);
     const year = dateObj.getFullYear();
     const month = dateObj.toLocaleString('default', { month: 'long' });
+
+    // Format date to MM/DD/YYYY
+    const formattedDate = `${('0' + (dateObj.getMonth() + 1)).slice(-2)}/${('0' + dateObj.getDate()).slice(-2)}/${year}`;
   
     // Parse inputs to float or null
     const parsedMorning = morning ? parseFloat(morning) : null;
@@ -38,7 +41,7 @@ function AddDraw() {
       month,
       year,
       draws: [{
-        date,
+        date: formattedDate,
         morning: parsedMorning,
         afternoon: parsedAfternoon,
         evening: parsedEvening
