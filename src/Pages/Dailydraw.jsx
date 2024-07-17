@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './dailydraw.css';
 import {
-    MDBCard,
-    MDBCardBody,
-    MDBCardTitle,
-    MDBContainer, 
-    MDBRow, 
-    MDBCol,
-    MDBSpinner
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBSpinner
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
 
@@ -29,21 +29,20 @@ function Dailydraw() {
     setLoading(true);
     setError(null);
     try {
-    //   const today = new Date().toISOString().split('T')[0];
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       const tomorrowStr = tomorrow.toISOString().split('T')[0];
       const response = await axios.get(`http://localhost:5000/api/get_predict?date=${tomorrowStr}&n_predictions=10`);
-      console.log('API Response:', response); // Log the entire response
+      console.log('API Response:', response);
       const { Morning_Predictions, Afternoon_Predictions, Evening_Predictions } = response.data;
-      console.log('Predictions:', response.data); // Log the predictions data
+      console.log('Predictions:', response.data);
       setPredictions({
         1: Morning_Predictions,
         2: Afternoon_Predictions,
         3: Evening_Predictions
       });
     } catch (err) {
-      console.error('API Fetch Error:', err); // Log the error
+      console.error('API Fetch Error:', err);
       setError('Failed to fetch predictions. Please try again later.');
     } finally {
       setLoading(false);
@@ -56,7 +55,7 @@ function Dailydraw() {
 
   const renderNumbers = (drawIndex) => {
     return predictions[drawIndex].map((number, idx) => (
-      <MDBCol md='1' key={idx} className='number m-4 rounded-5'>
+      <MDBCol xs='4' sm='3' md='2' key={idx} className='number rounded-5'>
         <p>{number}</p>
       </MDBCol>
     ));
@@ -92,7 +91,7 @@ function Dailydraw() {
           <MDBContainer>
             <div className='content active-content'>
               <p className='pt-4'>{`${state === 1 ? 'First' : state === 2 ? 'Second' : 'Third'} Draw`}</p>
-              <MDBRow style={{ marginLeft: '20px' }}>
+              <MDBRow className='justify-content-center'>
                 {renderNumbers(state)}
               </MDBRow>
             </div>

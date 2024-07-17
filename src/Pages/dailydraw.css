@@ -1,62 +1,105 @@
-MDBCardTitle, h2 , h5 ,h6 ,p{
-    color: rgb(41,40,91);
-}
-h6{
-    padding: 10px 10px 10px 20px ;
-}
-.tabs{
-    display: flex;
-    margin-left: 5%;
-    margin-bottom: 50px;
-    margin-top: 20px;
-}
-.contents{
+.MDBCard, .MDBCardBody {
     border-radius: 20px;
-    background-color: white;
-    width: 65%;
-    height: 50%;
-    margin-top: 3%;
-    margin-left: 15%;
-    
-}
-
-.number{
-    background-color: rgb(215,215,215);
+  }
+  
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 5%;
+  }
+  
+  .tab-card {
+    border-radius: 20px;
+    background-color: rgb(252, 250, 250);
+    cursor: pointer;
+    border: 1px solid gray;
+    margin: 10px;
+    width: 300px; /* Ensures all cards have the same width */
+    height: 170px; /* Ensures all cards have the same height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.3s, background-color 0.3s;
+  }
+  
+  .tab-card:hover {
+    border: solid 2px rgb(41, 40, 91);
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .tab-body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  
+  .active-tab {
+    border: solid 2px rgb(41, 40, 91);
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .number {
+    background-color: rgb(215, 215, 215);
     width: 100px;
     height: 80px;
     cursor: pointer;
     margin: 20px;
     padding: 30px;
     border-radius: 15px;
-}
-.number:hover{
-    border: solid 2px   rgb(41,40,91);;
-}
-
-.numbers{
-   margin-left: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
-   
-}
-.tab{
-    height: 170px;
-    width: 300px; 
-    background-color: rgb(252, 250, 250);
+  .number:hover {
+    border: solid 2px rgb(41, 40, 91);
+  }
+  
+  .contents {
     border-radius: 20px;
-    cursor: pointer;
-    border: 1px solid gray; /* Example style for inactive draw */
-
-}
-.tab:hover{
-    border: solid 2px rgb(41,40,91);
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
-}
-.active-tab{
-    border: solid 2px rgb(41,40,91);
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
-}
-.content{
-   margin-top: 10px;
-}
+    background-color: white;
+    height: auto;
+    margin-top: 3%;
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+  }
+  
+  .active-content {
+    display: block;
+  }
+  
+  h2, h5, p {
+    color: rgb(41, 40, 91);
+  }
+  
+  h5 {
+    margin-left: 4%;
+    margin-top: 4%;
+  }
+  
+  p.pt-4 {
+    padding-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .tabs {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .tab-card {
+      width: 90%;
+      margin: 10px 0;
+    }
+  
+    .contents {
+      width: 90%;
+      margin: 20px auto;
+    }
+  }
+  

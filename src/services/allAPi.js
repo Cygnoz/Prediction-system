@@ -5,3 +5,7 @@ import { commonAPI } from "./commonAPI";
 export const loginAPI = async (user) => {
   return await commonAPI("POST", `${BaseURL}/api/login`,user,"")
 }
+
+export const AddDrawAPI = async (newDraw) => {
+  return await commonAPI("POST", `${BaseURL}/api/add_data`,newDraw,"")
+}
