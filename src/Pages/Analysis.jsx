@@ -18,7 +18,7 @@ function DrawCard({ index, state, onClick, title, Icon }) {
   return (
     <MDBCard
       className={`mt-5 ${isActive ? 'active-draw' : 'draw'}`}
-      style={{ height: "90px", width: '300px', marginLeft: index === 1 ? '70px' : '60px', borderRadius: '20px' }}
+      style={{ height: "90px", width: '100%', maxWidth: '300px', margin: '10px', borderRadius: '20px' }}
       onClick={() => onClick(index)}
     >
       <MDBCardBody>
@@ -84,11 +84,8 @@ function Analysis() {
   };
 
   const action = (index) => {
-    console.log(`Changing state to ${index}`);
     setState(index);
   };
-
-  console.log(`Current state: ${state}`);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -99,12 +96,12 @@ function Analysis() {
   return (
     <div className='Analysis'>
       <ToastContainer />
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px' }}>
         <h2 className='mt-5'>Analysis</h2>
         <AddDraw />
       </div>
 
-      <div className='Draws ms-5'>
+      <div className='Draws'>
         <DrawCard
           index={1}
           state={state}
@@ -128,86 +125,88 @@ function Analysis() {
         />
       </div>
 
-      <div className='mt-5'>
-        <h5 className='ms-3 mt-4'>Draws</h5>
-      </div>
-
-      <div className="tables" style={{ overflowY: 'auto', maxHeight: '500px' }}>
+      <div className='tables'>
         {state === 1 && (
-          <MDBCard className='text-center' style={{ height: "450px", width: '550px', backgroundColor: "white", marginLeft: "200px" }}>
-            <MDBCardBody className='table active-table' style={{ overflowY: 'auto' }}>
+          <MDBCard className='text-center' style={{ width: '100%', maxWidth: '550px', margin: '0 auto', backgroundColor: "white" }}>
+            <MDBCardBody className='table active-table'>
               <MDBCardTitle>All Draws</MDBCardTitle>
-              <div>
-                <input className='w-50' placeholder='Select from & to date' type="date" style={{ borderRadius: '20px', marginLeft: '-245px', padding: '0px 10px 0px 10px', backgroundColor: "rgb(236, 230, 230)", fontSize: 'medium' }} />
+              <div style={{ margin: '10px' }}>
+                <input className='w-100' placeholder='Select from & to date' type="date" style={{ borderRadius: '20px', padding: '10px', backgroundColor: "rgb(236, 230, 230)", fontSize: 'medium' }} />
               </div>
-              <table className="draws-table">
-                <thead>
-                  <tr style={{ backgroundColor: 'rgb(215,215,215)' }}>
-                    <th>Date</th>
-                    <th>First Draw</th>
-                    <th>Second Draw</th>
-                    <th>Third Draw</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {draws.slice().reverse().map((draw, index) => (
-                    <tr key={index}>
-                      <td>{draw.date}</td>
-                      <td>{draw.morning !== null ? draw.morning : 'N/A'}</td>
-                      <td>{draw.afternoon !== null ? draw.afternoon : 'N/A'}</td>
-                      <td>{draw.evening !== null ? draw.evening : 'N/A'}</td>
+              <div className='table-container'>
+                <table className="draws-table">
+                  <thead>
+                    <tr style={{ backgroundColor: 'rgb(215,215,215)' }}>
+                      <th>Date</th>
+                      <th>First Draw</th>
+                      <th>Second Draw</th>
+                      <th>Third Draw</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {draws.slice().reverse().map((draw, index) => (
+                      <tr key={index}>
+                        <td>{draw.date}</td>
+                        <td>{draw.morning !== null ? draw.morning : 'N/A'}</td>
+                        <td>{draw.afternoon !== null ? draw.afternoon : 'N/A'}</td>
+                        <td>{draw.evening !== null ? draw.evening : 'N/A'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </MDBCardBody>
           </MDBCard>
         )}
 
         {state === 2 && (
-          <MDBCard className='text-center' style={{ height: "450px", width: '550px', backgroundColor: "white", marginLeft: "200px" }}>
-            <MDBCardBody className='table' style={{ overflowY: 'auto' }}>
+          <MDBCard className='text-center' style={{ width: '100%', maxWidth: '550px', margin: '0 auto', backgroundColor: "white" }}>
+            <MDBCardBody className='table'>
               <MDBCardTitle>Daily Draw</MDBCardTitle>
-              <table className="draws-table">
-                <thead>
-                  <tr style={{ backgroundColor: 'rgb(215,215,215)' }}>
-                    <th>First Draw</th>
-                    <th>Second Draw</th>
-                    <th>Third Draw</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{todayDraw.Morning_Predictions ? todayDraw.Morning_Predictions.join(', ') : 'N/A'}</td>
-                    <td>{todayDraw.Afternoon_Predictions ? todayDraw.Afternoon_Predictions.join(', ') : 'N/A'}</td>
-                    <td>{todayDraw.Evening_Predictions ? todayDraw.Evening_Predictions.join(', ') : 'N/A'}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className='table-container'>
+                <table className="draws-table">
+                  <thead>
+                    <tr style={{ backgroundColor: 'rgb(215,215,215)' }}>
+                      <th>First Draw</th>
+                      <th>Second Draw</th>
+                      <th>Third Draw</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{todayDraw.Morning_Predictions ? todayDraw.Morning_Predictions.join(', ') : 'N/A'}</td>
+                      <td>{todayDraw.Afternoon_Predictions ? todayDraw.Afternoon_Predictions.join(', ') : 'N/A'}</td>
+                      <td>{todayDraw.Evening_Predictions ? todayDraw.Evening_Predictions.join(', ') : 'N/A'}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </MDBCardBody>
           </MDBCard>
         )}
 
         {state === 3 && firstDraw && (
-          <MDBCard className='text-center' style={{ height: "100%", width: '600px', backgroundColor: "white", marginLeft: "200px" }}>
+          <MDBCard className='text-center' style={{ width: '100%', maxWidth: '600px', margin: '0 auto', backgroundColor: "white" }}>
             <MDBCardBody className='table'>
               <MDBCardTitle>Analysis</MDBCardTitle>
-              <table className="draws-table">
-                <thead>
-                  <tr style={{ backgroundColor: 'rgb(215,215,215)' }}>
-                    <th>Date</th>
-                    <th>Draws</th>
-                    <th>Accuracy</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>{firstDraw.date}</td>
-                    <td>{`${firstDraw.morning}, ${firstDraw.afternoon}, ${firstDraw.evening}`}</td>
-                    <td>{accuracyData}</td> {/* Assuming accuracyData has a property 'accuracy' */}
-                  </tr>
-                </tbody>
-              </table>
+              <div className='table-container'>
+                <table className="draws-table">
+                  <thead>
+                    <tr style={{ backgroundColor: 'rgb(215,215,215)' }}>
+                      <th>Date</th>
+                      <th>Draws</th>
+                      <th>Accuracy</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{firstDraw.date}</td>
+                      <td>{`${firstDraw.morning}, ${firstDraw.afternoon}, ${firstDraw.evening}`}</td>
+                      <td>{accuracyData}</td> {/* Assuming accuracyData has a property 'accuracy' */}
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </MDBCardBody>
           </MDBCard>
         )}

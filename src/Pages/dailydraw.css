@@ -85,6 +85,53 @@
   p.pt-4 {
     padding-top: 20px;
   }
+
+  .tab-body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  
+  .tab-body h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(41, 40, 91);
+    text-align: center;
+  }
+  
+  .tab-body p {
+    font-size: 1rem;
+    color: rgb(41, 40, 91);
+    text-align: center;
+    margin: 0;
+  }
+  
+  .tab-card {
+    border-radius: 20px;
+    background-color: rgb(252, 250, 250);
+    cursor: pointer;
+    border: 1px solid gray;
+    margin: 10px;
+    width: 300px;
+    height: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border 0.3s, background-color 0.3s;
+    padding: 10px;
+  }
+  
+  .tab-card:hover {
+    border: solid 2px rgb(41, 40, 91);
+    background-color: rgb(255, 255, 255);
+  }
+  
   
   @media (max-width: 768px) {
     .tabs {

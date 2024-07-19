@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './dailydraw.css';
 import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
   MDBContainer,
   MDBRow,
   MDBCol,
@@ -74,15 +71,12 @@ function Dailydraw() {
       <h2 className='mt-5 ms-4'>Draws</h2>
       <div className='tabs'>
         {[1, 2, 3].map((tabIndex) => (
-          <MDBCard key={tabIndex} style={{ borderRadius: '20px' }} className='ms-5'>
-            <MDBCardBody onClick={() => action(tabIndex)} className={`tab ${state === tabIndex ? 'active-tab' : ''}`}>
-            <MDBCardTitle className='text-center mt-5'>
-              {`${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}`}
-              <br /><br/>
-              {`${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}`}
-            </MDBCardTitle>
-            </MDBCardBody>
-          </MDBCard>
+          <div key={tabIndex} className={`tab-card ${state === tabIndex ? 'active-tab' : ''}`} onClick={() => action(tabIndex)}>
+            <div className='tab-body'>
+              <h3>{`${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}`}</h3>
+              <p>{`${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}`}</p>
+            </div>
+          </div>
         ))}
       </div>
       <div>

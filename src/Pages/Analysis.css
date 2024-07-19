@@ -1,48 +1,79 @@
+/* Ensure that the Analysis page takes up the full viewport height */
+.Analysis {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Flexbox adjustments for the content */
+.Analysis > div {
+  flex: 1;
+}
+
+/* DrawCard component adjustments */
+.Draws {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+  gap: 20px; /* Add space between cards */
+  justify-content: center;
+}
+
+.draw, .active-draw {
+  width: 100%;
+  max-width: 300px; /* Max width for larger screens */
+}
+
+/* Style adjustments for tables */
+.tables {
+  margin: 20px auto;
+  padding: 0 10px; /* Padding to ensure space on small screens */
+  overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+/* Table container with overflow for vertical scrolling */
+.table-container {
+  max-height: 400px; /* Adjust height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Table styling */
 .draws-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  border-radius: 5px;
+  font-size: 14px; /* Adjust font size for smaller screens */
 }
 
 .draws-table th, .draws-table td {
   padding: 8px;
-  font-size: 16px;
 }
 
 .draws-table td {
   text-align: center;
 }
 
-h5 {
-  color: rgb(41,40,91);
+/* Responsive header styles */
+h2, h5 {
+  margin: 10px 0;
+  text-align: center; /* Center align text */
 }
 
-.draw {
-  border: 1px solid gray; 
-  background-color: rgb(252, 250, 250);
-} 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .Draws {
+    flex-direction: column;
+    align-items: center;
+  }
 
-.draw:hover {
-  border: solid 2px rgb(41,40,91);
-  border-radius: 20px;
-  background-color: rgb(255, 255, 255);
-}
+  .draw, .active-draw {
+    width: 100%;
+    max-width: 90%; /* Adjust max width for smaller screens */
+  }
 
-.active-draw {
-  border: 2px solid rgb(41,40,91) !important; 
-  background-color: rgb(255, 255, 255) !important;
-}
+  .tables {
+    margin-left: 0;
+  }
 
-.table {
-  margin-top: 20px;
-}
-
-.Draws {
-  display: flex;
-}
-
-.tables {
-  margin-top: 20px;
-  margin-left: 10%;
+  .draws-table {
+    font-size: 12px; /* Smaller font size for smaller screens */
+  }
 }
