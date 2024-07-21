@@ -20,11 +20,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border 0.3s, background-color 0.3s;
+    transition: 0.5s ease-in-out;
   }
   
   .tab-card:hover {
-    border: solid 2px rgb(41, 40, 91);
     background-color: rgb(255, 255, 255);
   }
   
@@ -38,7 +37,6 @@
   }
   
   .active-tab {
-    border: solid 2px rgb(41, 40, 91);
     background-color: rgb(255, 255, 255);
   }
   
@@ -47,16 +45,17 @@
     width: 100px;
     height: 80px;
     cursor: pointer;
-    margin: 20px;
+    margin: 30px;
     padding: 30px;
     border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: box-shadow 0.3s ease;
   }
   
   .number:hover {
-    border: solid 2px rgb(41, 40, 91);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
   }
   
   .contents {
@@ -128,10 +127,19 @@
   }
   
   .tab-card:hover {
-    border: solid 2px rgb(41, 40, 91);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     background-color: rgb(255, 255, 255);
+    transition: 0.2s ease-in-out;
   }
   
+  /* CSS to center the spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
   
   @media (max-width: 768px) {
     .tabs {

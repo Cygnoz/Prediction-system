@@ -59,7 +59,10 @@ function Dailydraw() {
   };
 
   if (loading) {
-    return <MDBSpinner className="mt-5" />;
+    return ( <div className="spinner-container">
+    <MDBSpinner />
+  </div>
+    )
   }
 
   if (error) {

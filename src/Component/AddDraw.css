@@ -1,0 +1,17 @@
+/* AddDraw.css */
+
+/* Adjust input fields and modal content for smaller screens */
+@media (max-width: 576px) {
+  .modal-body div {
+    width: 100%;
+  }
+
+  .modal-body input {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+}

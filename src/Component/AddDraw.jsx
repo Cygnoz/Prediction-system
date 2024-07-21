@@ -13,6 +13,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AddDrawAPI } from '../services/allAPi';
+import './AddDraw.css'; 
 
 function AddDraw() {
   const [centredModal, setCentredModal] = useState(false);
@@ -87,7 +88,7 @@ function AddDraw() {
                 <p>Date :</p>
                 <div>
                   <input
-                    className='w-50'
+                    className='w-100 w-sm-50'
                     style={{ borderRadius: '20px', padding: "0px 10px 0px 10px", backgroundColor: 'rgb(215, 215, 215)', color: 'rgb(41,40,91)' }}
                     type="date"
                     value={date}
@@ -95,14 +96,14 @@ function AddDraw() {
                   />
                 </div>
               </div>
-              <div style={{ display: 'flex' }} className='mt-4 mb-3'>
-                <div>
+              <div style={{ display: 'flex', flexWrap: 'wrap' }} className='mt-4 mb-3'>
+                <div className='w-100 w-sm-50 mb-3'>
                   <p>First Draw :</p>
                   <div>
                     <input
                       className=''
                       placeholder='First Draw'
-                      style={{ borderRadius: '20px', padding: "0px 10px 0px 10px", backgroundColor: 'rgb(215, 215, 215)', color: 'rgb(41,40,91)', width: "140px" }}
+                      style={{ borderRadius: '20px', padding: "0px 10px 0px 10px", backgroundColor: 'rgb(215, 215, 215)', color: 'rgb(41,40,91)', width: "100%" }}
                       type="number"
                       value={morning}
                       onChange={(e) => setMorning(e.target.value)}
@@ -110,13 +111,13 @@ function AddDraw() {
                   </div>
                 </div>
 
-                <div className='ms-3'>
+                <div className='w-100 w-sm-50 mb-3'>
                   <p>Second Draw :</p>
                   <div>
                     <input
                       className=''
                       placeholder='Second Draw'
-                      style={{ borderRadius: '20px', padding: "0px 10px 0px 10px", backgroundColor: 'rgb(215, 215, 215)', color: 'rgb(41,40,91)', width: "140px" }}
+                      style={{ borderRadius: '20px', padding: "0px 10px 0px 10px", backgroundColor: 'rgb(215, 215, 215)', color: 'rgb(41,40,91)', width: "100%" }}
                       type="number"
                       value={afternoon}
                       onChange={(e) => setAfternoon(e.target.value)}
@@ -124,13 +125,13 @@ function AddDraw() {
                   </div>
                 </div>
 
-                <div className='ms-3'>
+                <div className='w-100 w-sm-50 mb-3'>
                   <p>Third Draw :</p>
                   <div>
                     <input
                       className=''
                       placeholder='Third Draw'
-                      style={{ borderRadius: '20px', padding: "0px 10px 0px 10px", backgroundColor: 'rgb(215, 215, 215)', color: 'rgb(41,40,91)', width: "140px" }}
+                      style={{ borderRadius: '20px', padding: "0px 10px 0px 10px", backgroundColor: 'rgb(215, 215, 215)', color: 'rgb(41,40,91)', width: "100%" }}
                       type="number"
                       value={evening}
                       onChange={(e) => setEvening(e.target.value)}

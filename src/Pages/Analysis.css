@@ -17,7 +17,9 @@
   gap: 20px; /* Add space between cards */
   justify-content: center;
 }
-
+.draw{
+  cursor: pointer;
+}
 .draw, .active-draw {
   width: 100%;
   max-width: 300px; /* Max width for larger screens */
