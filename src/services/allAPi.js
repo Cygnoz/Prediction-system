@@ -1,4 +1,4 @@
-import { BaseURL } from "./BaseURL";
+import  BaseURL  from "./BaseURL";
 import { commonAPI } from "./commonAPI";
 //login API
 
