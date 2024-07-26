@@ -14,9 +14,8 @@ export const GetDrawAPI = async () => {
   return await commonAPI("GET", `${BaseURL}/api/get_data`,"")
 }
 
-export const GetPredictAPI = async () => {
-  const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-  const url = `${BaseURL}/api/get_predict?date=${today}`;
+export const GetPredictAPI = async (date) => {
+  const url = `${BaseURL}/api/get_predict?date=${date}`;
   return await commonAPI("GET", url, "");
 }
 

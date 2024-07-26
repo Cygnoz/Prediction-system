@@ -6,7 +6,8 @@ import {
   MDBCol,
   MDBSpinner
 } from 'mdb-react-ui-kit';
-import axios from 'axios';
+import { GetPredictAPI } from '../services/allAPi';
+
 
 function Dailydraw() {
   const [state, setState] = useState(1);
@@ -28,8 +29,14 @@ function Dailydraw() {
     try {
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
-      const tomorrowStr = tomorrow.toISOString().split('T')[0];
-      const response = await axios.get(`http://localhost:5000/api/get_predict?date=${tomorrowStr}&n_predictions=10`);
+      
+      // Format date as YY-MM-DD
+      const year = tomorrow.getFullYear().toString().slice(-2);
+      const month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
+      const day = tomorrow.getDate().toString().padStart(2, '0');
+      const tomorrowStr = `${year}-${month}-${day}`;
+  
+      const response = await GetPredictAPI(tomorrowStr);  // Pass the formatted date here
       console.log('API Response:', response);
       const { Morning_Predictions, Afternoon_Predictions, Evening_Predictions } = response.data;
       console.log('Predictions:', response.data);
@@ -45,6 +52,7 @@ function Dailydraw() {
       setLoading(false);
     }
   };
+  
 
   const action = (index) => {
     setState(index);
