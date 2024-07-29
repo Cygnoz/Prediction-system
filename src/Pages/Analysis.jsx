@@ -9,7 +9,7 @@ import AddDraw from '../Component/AddDraw';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import { GetDrawAPI, GetPredictAPI, GetAccuracyAPI ,GetTodayPredictAPI} from '../services/allAPi.js';
+import { GetDrawAPI, GetAccuracyAPI ,GetTodayPredictAPI} from '../services/allAPi.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
