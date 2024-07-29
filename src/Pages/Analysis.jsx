@@ -9,7 +9,7 @@ import AddDraw from '../Component/AddDraw';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import { GetDrawAPI, GetPredictAPI, GetAccuracyAPI } from '../services/allAPi.js';
+import { GetDrawAPI, GetPredictAPI, GetAccuracyAPI ,GetTodayPredictAPI} from '../services/allAPi.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -40,6 +40,7 @@ function Analysis() {
 
   useEffect(() => {
     fetchDraws();
+    GetTodayPredictAPI();
     fetchTodayPrediction();
     fetchAccuracyData();
   }, [state]);
@@ -61,8 +62,10 @@ function Analysis() {
 
   const fetchTodayPrediction = async () => {
     try {
-      const date = new Date().toISOString().split('T')[0];
-      const response = await GetPredictAPI(`?date=${date}&n_predictions=10`);
+      const today = new Date();
+      today.setDate(today.getDate() - 1); // Get yesterday's date
+      const date = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+      const response = await GetTodayPredictAPI(date);
       if (response instanceof Error) {
         throw new Error('Failed to fetch today\'s prediction data');
       }
@@ -72,6 +75,7 @@ function Analysis() {
       toast.error('Error fetching today\'s prediction');
     }
   };
+
 
   const fetchAccuracyData = async () => {
     try {

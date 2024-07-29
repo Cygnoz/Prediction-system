@@ -22,3 +22,8 @@ export const GetPredictAPI = async (date) => {
 export const GetAccuracyAPI = async () => {
   return await commonAPI("GET",`${BaseURL}/api/get_accuracy`)
 }
+
+export const GetTodayPredictAPI = async (date) => {
+  const url = `${BaseURL}/api/get_predict?date=${date}&n_predictions=10`;
+  return await commonAPI("GET", url, "");
+}
