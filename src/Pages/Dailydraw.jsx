@@ -27,16 +27,15 @@ function Dailydraw() {
     setLoading(true);
     setError(null);
     try {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
+      const today = new Date();
       
       // Format date as YY-MM-DD
-      const year = tomorrow.getFullYear().toString().slice(-2);
-      const month = (tomorrow.getMonth() + 1).toString().padStart(2, '0');
-      const day = tomorrow.getDate().toString().padStart(2, '0');
-      const tomorrowStr = `${year}-${month}-${day}`;
+      const year = today.getFullYear().toString().slice(-2);
+      const month = (today.getMonth() + 1).toString().padStart(2, '0');
+      const day = today.getDate().toString().padStart(2, '0');
+      const todayStr = `${year}-${month}-${day}`;
   
-      const response = await GetPredictAPI(tomorrowStr);  // Pass the formatted date here
+      const response = await GetPredictAPI(todayStr);  // Pass the formatted date here
       console.log('API Response:', response);
       const { Morning_Predictions, Afternoon_Predictions, Evening_Predictions } = response.data;
       console.log('Predictions:', response.data);
