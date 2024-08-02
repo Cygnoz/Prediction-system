@@ -79,7 +79,7 @@ function Dailydraw() {
 
   return (
     <div>
-      <h2 className='mt-5 ms-4'>Draws</h2>
+      <h2 className='mt-5 ms-4 fw-bold'>Draws</h2>
       <div className='tabs'>
         {[1, 2, 3].map((tabIndex) => (
           <div key={tabIndex} className={`tab-card ${state === tabIndex ? 'active-tab' : ''}`} onClick={() => action(tabIndex)}>

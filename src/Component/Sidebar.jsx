@@ -22,7 +22,7 @@ function Sidebar({ children }) {
     <div className='main'>
       <div className="sidebar">
         <div className="topheading">
-          <h2 style={{ backgroundColor: 'rgb(41, 40, 91)', color: "white" }}>Prediction</h2>
+          <h2 style={{ backgroundColor: 'rgb(41, 40, 91)', color: "white" ,fontWeight:"bold"}}>PREDICTION</h2>
         </div>
         {
           MenuItem.map((item, index) => (

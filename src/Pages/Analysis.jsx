@@ -119,7 +119,7 @@ function Analysis() {
     <div className="Analysis">
       <ToastContainer />
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px" }}>
-        <h2 className="mt-5">Analysis</h2>
+        <h2 className="mt-5 fw-bold">Analysis</h2>
         <AddDraw />
       </div>
 
@@ -137,12 +137,12 @@ function Analysis() {
               <div style={{ margin: "10px" }}></div>
               <div className="table-container">
                 <table className="draws-table">
-                  <thead>
+                  <thead className="sticky-top bg-light">
                     <tr>
-                      <th>Date</th>
-                      <th>First Draw</th>
-                      <th>Second Draw</th>
-                      <th>Third Draw</th>
+                      <th className="fw-bold">Date</th>
+                      <th className="fw-bold">First Draw</th>
+                      <th className="fw-bold">Second Draw</th>
+                      <th className="fw-bold">Third Draw</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -170,12 +170,12 @@ function Analysis() {
               <MDBCardTitle>Previous Draws</MDBCardTitle>
               <div className="table-container">
                 <table className="draws-table">
-                  <thead>
+                  <thead className="sticky-top bg-light">
                     <tr>
-                      <th className="date-column">Date</th>
-                      <th>Morning</th>
-                      <th>Afternoon</th>
-                      <th>Evening</th>
+                      <th className="date-column fw-bold">Date</th>
+                      <th className="fw-bold">Morning</th>
+                      <th className="fw-bold">Afternoon</th>
+                      <th className="fw-bold">Evening</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -203,11 +203,11 @@ function Analysis() {
               <MDBCardTitle>Analysis</MDBCardTitle>
               <div className="table-container">
                 <table className="draws-table">
-                  <thead>
+                  <thead className="sticky-top bg-light">
                     <tr>
-                      <th>Date</th>
-                      <th>Draws</th>
-                      <th>Accuracy</th>
+                      <th className="fw-bold">Date</th>
+                      <th className="fw-bold">Draws</th>
+                      <th className="fw-bold">Accuracy</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -217,7 +217,7 @@ function Analysis() {
                       <td>
                         {accuracyData ? (
                           <div className="accuracy-data">
-                            <p>Accuracy: {accuracyData.overall_accuracy}%</p>
+                            <p>{accuracyData.overall_accuracy}%</p>
                           </div>
                         ) : (
                           <p>No accuracy data available</p>
