@@ -8,7 +8,6 @@ import {
 } from 'mdb-react-ui-kit';
 import { GetPredictAPI } from '../services/allAPi';
 
-
 function Dailydraw() {
   const [state, setState] = useState(1);
   const [predictions, setPredictions] = useState({
@@ -18,6 +17,7 @@ function Dailydraw() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [todayStr, setTodayStr] = useState('');
 
   useEffect(() => {
     fetchPredictions();
@@ -33,9 +33,10 @@ function Dailydraw() {
       const year = today.getFullYear().toString().slice(-2);
       const month = (today.getMonth() + 1).toString().padStart(2, '0');
       const day = today.getDate().toString().padStart(2, '0');
-      const todayStr = `${year}-${month}-${day}`;
+      const todayStrFormatted = `${day}-${month}-${year}`;
+      setTodayStr(todayStrFormatted);
   
-      const response = await GetPredictAPI(todayStr);  // Pass the formatted date here
+      const response = await GetPredictAPI(todayStrFormatted);  // Pass the formatted date here
       console.log('API Response:', response);
       const { Morning_Predictions, Afternoon_Predictions, Evening_Predictions } = response.data;
       console.log('Predictions:', response.data);
@@ -51,7 +52,6 @@ function Dailydraw() {
       setLoading(false);
     }
   };
-  
 
   const action = (index) => {
     setState(index);
@@ -66,9 +66,10 @@ function Dailydraw() {
   };
 
   if (loading) {
-    return ( <div className="spinner-container">
-    <MDBSpinner />
-  </div>
+    return (
+      <div className="spinner-container">
+        <MDBSpinner />
+      </div>
     )
   }
 
@@ -85,6 +86,7 @@ function Dailydraw() {
             <div className='tab-body'>
               <h3>{`${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}`}</h3>
               <p>{`${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}`}</p>
+              <p>{todayStr}</p> {/* Add the date here */}
             </div>
           </div>
         ))}

@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from "react"
-import "./Analysis.css"
-import { MDBCard, MDBCardBody, MDBCardTitle } from "mdb-react-ui-kit"
-import AddDraw from "../Component/AddDraw"
-import QueryStatsIcon from "@mui/icons-material/QueryStats"
-import AccessTimeIcon from "@mui/icons-material/AccessTime"
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted"
-import { GetDrawAPI, GetAccuracyAPI, GetTodayPredictAPI } from "../services/allAPi.js"
-import { ToastContainer, toast } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import React, { useEffect, useState } from "react";
+import "./Analysis.css";
+import { MDBCard, MDBCardBody, MDBCardTitle } from "mdb-react-ui-kit";
+import AddDraw from "../Component/AddDraw";
+import QueryStatsIcon from "@mui/icons-material/QueryStats";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import { GetDrawAPI, GetAccuracyAPI, GetPredictedDataAPI } from "../services/allAPi.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function DrawCard({ index, state, onClick, title, Icon }) {
-  const isActive = state === index
+  const isActive = state === index;
   return (
-    <MDBCard className={`mt-5 ${isActive ? "active-draw" : "draw"}`} style={{ height: "90px", width: "100%", maxWidth: "300px", margin: "10px", borderRadius: "20px" }} onClick={() => onClick(index)}>
+    <MDBCard
+      className={`mt-5 ${isActive ? "active-draw" : "draw"}`}
+      style={{
+        height: "90px",
+        width: "100%",
+        maxWidth: "300px",
+        margin: "10px",
+        borderRadius: "20px",
+      }}
+      onClick={() => onClick(index)}
+    >
       <MDBCardBody>
         <MDBCardTitle className="text-center mt-2">
           <Icon sx={{ fontSize: 30 }} className="me-3" />
@@ -20,74 +30,90 @@ function DrawCard({ index, state, onClick, title, Icon }) {
         </MDBCardTitle>
       </MDBCardBody>
     </MDBCard>
-  )
+  );
 }
 
 function Analysis() {
-  const [state, setState] = useState(1)
-  const [draws, setDraws] = useState([])
-  const [todayDraw, setTodayDraw] = useState(null)
-  const [accuracyData, setAccuracyData] = useState(null)
-  const [error, setError] = useState(null)
+  const [state, setState] = useState(1);
+  const [draws, setDraws] = useState([]);
+  const [predictedData, setPredictedData] = useState([]);
+  const [accuracyData, setAccuracyData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchDraws()
-    GetTodayPredictAPI()
-    fetchTodayPrediction()
-    fetchAccuracyData()
-  }, [state])
+    fetchDraws();
+    fetchPredictedData();
+    fetchAccuracyData();
+  }, [state]);
 
   const fetchDraws = async () => {
     try {
-      const response = await GetDrawAPI()
+      const response = await GetDrawAPI();
       if (response instanceof Error) {
-        throw new Error("Failed to fetch draws data")
+        throw new Error("Failed to fetch draws data");
       }
-      const data = response.data
-      const allDraws = data.flatMap((item) => item.draws)
-      setDraws(allDraws)
+      const data = response.data;
+      const allDraws = data.flatMap((item) => item.draws);
+      setDraws(allDraws);
     } catch (error) {
-      console.error("Error fetching draws data:", error)
-      toast.error("Error fetching draws data")
+      console.error("Error fetching draws data:", error);
+      toast.error("Error fetching draws data");
     }
-  }
+  };
 
-  const fetchTodayPrediction = async () => {
+  const fetchPredictedData = async () => {
     try {
-      const today = new Date()
-      today.setDate(today.getDate() - 1) // Get yesterday's date
-      const date = today.toISOString().split("T")[0] // Format date as YYYY-MM-DD
-      const response = await GetTodayPredictAPI(date)
-      if (response instanceof Error) {
-        throw new Error("Failed to fetch today's prediction data")
+      const response = await GetPredictedDataAPI();
+      console.log("API Response:", response);
+      console.log("Response type:", typeof response);
+      console.log("Response data:", response.data);
+
+      if (response && Array.isArray(response)) {
+        console.log("Setting predicted data");
+        setPredictedData(response);
+      } else if (response && response.data && Array.isArray(response.data)) {
+        console.log("Setting predicted data");
+        setPredictedData(response.data);
+      } else {
+        console.log("Unexpected data format");
+        throw new Error("Unexpected data format");
       }
-      setTodayDraw(response.data)
     } catch (error) {
-      console.error("Error fetching today's prediction:", error)
-      toast.error("Error fetching today's prediction")
+      console.error("Error fetching predicted data:", error);
+      toast.error(`Error fetching predicted data: ${error.message}`);
     }
-  }
+  };
 
   const fetchAccuracyData = async () => {
     try {
-      const response = await GetAccuracyAPI()
-      setAccuracyData(response.data)
-      console.log(accuracyData)
+      const response = await GetAccuracyAPI();
+      setAccuracyData(response.data);
+      console.log(accuracyData);
     } catch (error) {
-      console.error("Error fetching accuracy data:", error)
-      setError(error.message)
+      console.error("Error fetching accuracy data:", error);
+      setError(error.message);
     }
-  }
+  };
 
   const action = (index) => {
-    setState(index)
-  }
+    setState(index);
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  };
+
+  const renderPredictions = (predictions) => {
+    if (!predictions || predictions.length === 0) return "N/A";
+    return predictions.join(", ");
+  };
 
   if (error) {
-    return <div>Error: {error}</div>
+    return <div>Error: {error}</div>;
   }
 
-  const firstDraw = draws.length > 0 ? draws[draws.length - 1] : null // Get the latest draw
+  const firstDraw = draws.length > 0 ? draws[draws.length - 1] : null; // Get the latest draw
 
   return (
     <div className="Analysis">
@@ -99,7 +125,7 @@ function Analysis() {
 
       <div className="Draws">
         <DrawCard index={1} state={state} onClick={action} title="Result" Icon={FormatListBulletedIcon} />
-        <DrawCard index={2} state={state} onClick={action} title="Daily Draw's" Icon={AccessTimeIcon} />
+        <DrawCard index={2} state={state} onClick={action} title="Previous Draws" Icon={AccessTimeIcon} />
         <DrawCard index={3} state={state} onClick={action} title="Analyser" Icon={QueryStatsIcon} />
       </div>
 
@@ -108,13 +134,11 @@ function Analysis() {
           <MDBCard className="text-center" style={{ width: "100%", maxWidth: "550px", margin: "0 auto", backgroundColor: "white" }}>
             <MDBCardBody className="table active-table">
               <MDBCardTitle>All Draws</MDBCardTitle>
-              <div style={{ margin: "10px" }}>
-                <input className="w-100" placeholder="Select from & to date" type="date" style={{ borderRadius: "20px", padding: "10px", backgroundColor: "rgb(236, 230, 230)", fontSize: "medium" }} />
-              </div>
+              <div style={{ margin: "10px" }}></div>
               <div className="table-container">
                 <table className="draws-table">
                   <thead>
-                    <tr style={{ backgroundColor: "rgb(215,215,215)" }}>
+                    <tr>
                       <th>Date</th>
                       <th>First Draw</th>
                       <th>Second Draw</th>
@@ -141,24 +165,31 @@ function Analysis() {
         )}
 
         {state === 2 && (
-          <MDBCard className="text-center" style={{ width: "100%", maxWidth: "550px", margin: "0 auto", backgroundColor: "white" }}>
+          <MDBCard className="text-center" style={{ width: "100%", margin: "0 auto", backgroundColor: "white" }}>
             <MDBCardBody className="table">
-              <MDBCardTitle>Daily Draw</MDBCardTitle>
+              <MDBCardTitle>Previous Draws</MDBCardTitle>
               <div className="table-container">
                 <table className="draws-table">
                   <thead>
-                    <tr style={{ backgroundColor: "rgb(215,215,215)" }}>
-                      <th>First Draw</th>
-                      <th>Second Draw</th>
-                      <th>Third Draw</th>
+                    <tr>
+                      <th className="date-column">Date</th>
+                      <th>Morning</th>
+                      <th>Afternoon</th>
+                      <th>Evening</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>{todayDraw.Morning_Predictions ? todayDraw.Morning_Predictions.join(", ") : "N/A"}</td>
-                      <td>{todayDraw.Afternoon_Predictions ? todayDraw.Afternoon_Predictions.join(", ") : "N/A"}</td>
-                      <td>{todayDraw.Evening_Predictions ? todayDraw.Evening_Predictions.join(", ") : "N/A"}</td>
-                    </tr>
+                    {predictedData
+                      .slice()
+                      .sort((a, b) => new Date(b.date) - new Date(a.date)) // Sort in descending order
+                      .map((item, index) => (
+                        <tr key={index}>
+                          <td className="date-column">{formatDate(item.date)}</td>
+                          <td>{renderPredictions(item.value.Morning_Predictions)}</td>
+                          <td>{renderPredictions(item.value.Afternoon_Predictions)}</td>
+                          <td>{renderPredictions(item.value.Evening_Predictions)}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>
@@ -173,7 +204,7 @@ function Analysis() {
               <div className="table-container">
                 <table className="draws-table">
                   <thead>
-                    <tr style={{ backgroundColor: "rgb(215,215,215)" }}>
+                    <tr>
                       <th>Date</th>
                       <th>Draws</th>
                       <th>Accuracy</th>
@@ -185,9 +216,9 @@ function Analysis() {
                       <td>{`${firstDraw.morning}, ${firstDraw.afternoon}, ${firstDraw.evening}`}</td>
                       <td>
                         {accuracyData ? (
-                           <div className="accuracy-data">
+                          <div className="accuracy-data">
                             <p>Accuracy: {accuracyData.overall_accuracy}%</p>
-                           </div> 
+                          </div>
                         ) : (
                           <p>No accuracy data available</p>
                         )}
@@ -201,7 +232,7 @@ function Analysis() {
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default Analysis
+export default Analysis;

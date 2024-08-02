@@ -12,10 +12,12 @@ import {
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { loginAPI } from '../services/allAPi';
 
 function Login() {
   const navigate = useNavigate();
+  const { setIsAuthenticated } = useAuth();
   const [formData, setFormData] = useState({ username: "", password: "" });
 
   const handleLogin = async (e) => {
@@ -29,6 +31,7 @@ function Login() {
         if (result.status === 200) {
           toast.success("Login successful");
           localStorage.setItem('token', result.data.token);
+          setIsAuthenticated(true);
           navigate('/home');
         } else {
           toast.error(result.response.data.error || "Login failed");

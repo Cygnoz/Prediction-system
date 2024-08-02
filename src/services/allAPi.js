@@ -1,17 +1,18 @@
-import  BaseURL  from "./BaseURL";
+import BaseURL from "./BaseURL";
 import { commonAPI } from "./commonAPI";
-//login API
 
+// Login API
 export const loginAPI = async (user) => {
-  return await commonAPI("POST", `${BaseURL}/api/login`,user,"")
+  return await commonAPI("POST", `${BaseURL}/api/login`, user, "")
 }
 
+// Add other APIs as necessary
 export const AddDrawAPI = async (newDraw) => {
-  return await commonAPI("POST", `${BaseURL}/api/add_data`,newDraw,"")
+  return await commonAPI("POST", `${BaseURL}/api/add_data`, newDraw, "")
 }
 
 export const GetDrawAPI = async () => {
-  return await commonAPI("GET", `${BaseURL}/api/get_data`,"")
+  return await commonAPI("GET", `${BaseURL}/api/get_data`, "")
 }
 
 export const GetPredictAPI = async (date) => {
@@ -20,10 +21,13 @@ export const GetPredictAPI = async (date) => {
 }
 
 export const GetAccuracyAPI = async () => {
-  return await commonAPI("GET",`${BaseURL}/api/get_accuracy`)
+  return await commonAPI("GET", `${BaseURL}/api/get_accuracy`)
 }
 
 export const GetTodayPredictAPI = async (date) => {
-  const url = `${BaseURL}/api/get_predict?date=${date}&n_predictions=10`;
-  return await commonAPI("GET", url, "");
+  return await commonAPI("GET", `${BaseURL}/api/get_predict`, "");
+}
+
+export const GetPredictedDataAPI = async () => {
+  return await commonAPI("GET", `${BaseURL}/api/get_predict_data`)
 }

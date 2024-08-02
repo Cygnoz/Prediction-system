@@ -1,160 +1,137 @@
-.MDBCard, .MDBCardBody {
-    border-radius: 20px;
-  }
-  
-  .tabs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px 5%;
-  }
-  
-  .tab-card {
-    border-radius: 20px;
-    background-color: rgb(252, 250, 250);
-    cursor: pointer;
-    border: 1px solid gray;
-    margin: 10px;
-    width: 300px; /* Ensures all cards have the same width */
-    height: 170px; /* Ensures all cards have the same height */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.5s ease-in-out;
-  }
-  
-  .tab-card:hover {
-    background-color: rgb(255, 255, 255);
-  }
-  
-  .tab-body {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-  }
-  
-  .active-tab {
-    background-color: rgb(255, 255, 255);
-  }
-  
-  .number {
-    background-color: rgb(215, 215, 215);
-    width: 100px;
-    height: 80px;
-    cursor: pointer;
-    margin: 30px;
-    padding: 30px;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .number:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-  }
-  
-  .contents {
-    border-radius: 20px;
-    background-color: white;
-    height: auto;
-    margin-top: 3%;
-    padding: 20px;
-    width: 90%;
-    margin: 20px auto;
-  }
-  
-  .active-content {
-    display: block;
-  }
-  
-  h2, h5, p {
-    color: rgb(41, 40, 91);
-  }
-  
-  h5 {
-    margin-left: 4%;
-    margin-top: 4%;
-  }
-  
-  p.pt-4 {
-    padding-top: 20px;
-  }
-
-  .tab-body {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    padding: 20px;
-  }
-  
-  .tab-body h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: rgb(41, 40, 91);
-    text-align: center;
-  }
-  
-  .tab-body p {
-    font-size: 1rem;
-    color: rgb(41, 40, 91);
-    text-align: center;
-    margin: 0;
-  }
-  
-  .tab-card {
-    border-radius: 20px;
-    background-color: rgb(252, 250, 250);
-    cursor: pointer;
-    border: 1px solid gray;
-    margin: 10px;
-    width: 300px;
-    height: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border 0.3s, background-color 0.3s;
-    padding: 10px;
-  }
-  
-  .tab-card:hover {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    background-color: rgb(255, 255, 255);
-    transition: 0.2s ease-in-out;
-  }
-  
-  /* CSS to center the spinner */
+/* General styles for the card container */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 5%;
+}
+ 
+/* Styles for each card */
+.tab-card {
+  border-radius: 20px;
+  background-color: rgb(252, 250, 250);
+  cursor: pointer;
+  border: 1px solid gray;
+  margin: 10px;
+  width: 300px; /* Ensures all cards have the same width */
+  height: 170px; /* Ensures all cards have the same height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease-in-out, transform 0.2s, box-shadow 0.2s;
+  padding: 10px;
+}
+ 
+/* Hover effect to make cards more interactive */
+.tab-card:hover {
+  background-color: rgb(181, 181, 192);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+ 
+/* Selected card style */
+.tab-card.active-tab {
+  background-color: rgb(181, 181, 192);
+}
+ 
+/* Styles for the card content */
+.tab-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  padding: 20px;
+}
+ 
+.tab-body h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: rgb(41, 40, 91);
+  text-align: center;
+}
+ 
+.tab-body p {
+  font-size: 1rem;
+  color: rgb(41, 40, 91);
+  text-align: center;
+  margin: 0;
+}
+ 
+/* Number element style */
+.number {
+  background-color: rgb(215, 215, 215);
+  width: 100px;
+  height: 80px;
+  cursor: pointer;
+  margin: 30px;
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s ease;
+}
+ 
+.number:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+}
+ 
+/* Content container style */
+.contents {
+  border-radius: 20px;
+  background-color: white;
+  height: auto;
+  margin-top: 3%;
+  padding: 20px;
+  width: 90%;
+  margin: 20px auto;
+}
+ 
+/* Active content display style */
+.active-content {
+  display: block;
+}
+ 
+/* Text styles */
+h2, h5, p {
+  color: rgb(41, 40, 91);
+}
+ 
+h5 {
+  margin-left: 4%;
+  margin-top: 4%;
+}
+ 
+p.pt-4 {
+  padding-top: 20px;
+}
+ 
+/* CSS to center the spinner */
 .spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
 }
-
-  
-  @media (max-width: 768px) {
-    .tabs {
+ 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .tabs {
       flex-direction: column;
       align-items: center;
-    }
-  
-    .tab-card {
+  }
+ 
+  .tab-card {
       width: 90%;
       margin: 10px 0;
-    }
-  
-    .contents {
+  }
+ 
+  .contents {
       width: 90%;
       margin: 20px auto;
-    }
   }
-  
+}
