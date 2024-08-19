@@ -60,7 +60,14 @@
   text-align: center;
   margin: 0;
 }
- 
+.no-prediction-message {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+  padding: 20px;
+  height:160px;
+}
+
 /* Number element style */
 .number {
   background-color: rgb(215, 215, 215);
