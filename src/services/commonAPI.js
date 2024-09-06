@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-export const commonAPI = async (httpRequest,url,reqBody,reqHeader)=>{
+export const commonAPI = async (httpRequest,url,reqBody)=>{
     const reqConfig = {
         method:httpRequest,
         url,
         data:reqBody,
-        headers:reqHeader?reqHeader:{"Content-Type":"application/json"}
+        headers:{"Content-Type":"application/json"}
     }
     return await axios(reqConfig).then(
         (result)=> {
