@@ -41,10 +41,16 @@ function Analysis() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchDraws();
-    fetchPredictedData();
-    fetchAccuracyData();
-  }, [state]);
+    if (!draws.length) {
+      fetchDraws();
+    }
+    if (!predictedData.length) {
+      fetchPredictedData();
+    }
+    if (!accuracyData) {
+      fetchAccuracyData();
+    }
+  }, []);
 
   const fetchDraws = async () => {
     try {
