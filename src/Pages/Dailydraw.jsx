@@ -21,32 +21,25 @@ function Dailydraw() {
   const [noPrediction, setNoPrediction] = useState(false);
 
   useEffect(() => {
-    const today = new Date();
-    const year = today.getFullYear().toString().slice(-2);
-    const month = (today.getMonth() + 1).toString().padStart(2, '0');
-    const day = today.getDate().toString().padStart(2, '0');
-    const todayStrFormatted = `${day}-${month}-${year}`;
-    setTodayStr(todayStrFormatted);
-
-    const storedPredictions = localStorage.getItem('predictions');
-    const storedDate = localStorage.getItem('todayStr');
-
-    if (storedPredictions && storedDate === todayStrFormatted) {
-      setPredictions(JSON.parse(storedPredictions));
-      setLoading(false);
-    } else {
-      fetchPredictions(todayStrFormatted);
-    }
+    fetchPredictions();
   }, []);
 
-  const fetchPredictions = async (todayStrFormatted) => {
+  const fetchPredictions = async () => {
     setLoading(true);
     setError(null);
     setNoPrediction(false);
     try {
-      if ((todayStrFormatted.slice(0, 2) === '15' && todayStrFormatted.slice(3, 5) === '08') ||
-          (todayStrFormatted.slice(0, 2) === '02' && todayStrFormatted.slice(3, 5) === '10') ||
-          (todayStrFormatted.slice(0, 2) === '26' && todayStrFormatted.slice(3, 5) === '01')) {
+      const today = new Date();
+      
+      // Format date as DD-MM-YY
+      const year = today.getFullYear().toString().slice(-2);
+      const month = (today.getMonth() + 1).toString().padStart(2, '0');
+      const day = today.getDate().toString().padStart(2, '0');
+      const todayStrFormatted = ${day}-${month}-${year};
+      setTodayStr(todayStrFormatted);
+
+      // Check if today is one of the special dates
+      if ((day === '15' && month === '08') || (day === '02' && month === '10') || (day === '26' && month === '01')) {
         setNoPrediction(true);
         setLoading(false);
         return;
@@ -61,14 +54,6 @@ function Dailydraw() {
         2: Afternoon_Predictions,
         3: Evening_Predictions
       });
-
-      // Store data in localStorage
-      localStorage.setItem('predictions', JSON.stringify({
-        1: Morning_Predictions,
-        2: Afternoon_Predictions,
-        3: Evening_Predictions
-      }));
-      localStorage.setItem('todayStr', todayStrFormatted);
     } catch (err) {
       console.error('API Fetch Error:', err);
       setError('Failed to fetch predictions. Please try again later.');
@@ -113,10 +98,10 @@ function Dailydraw() {
       <h2 className='mt-5 ms-4 fw-bold'>Draws</h2>
       <div className='tabs'>
         {[1, 2, 3].map((tabIndex) => (
-          <div key={tabIndex} className={`tab-card ${state === tabIndex ? 'active-tab' : ''}`} onClick={() => action(tabIndex)}>
+          <div key={tabIndex} className={tab-card ${state === tabIndex ? 'active-tab' : ''}} onClick={() => action(tabIndex)}>
             <div className='tab-body'>
-              <h3>{`${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}`}</h3>
-              <p>{`${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}`}</p>
+              <h3>{${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}}</h3>
+              <p>{${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}}</p>
               <p>{todayStr}</p>
             </div>
           </div>
@@ -127,7 +112,7 @@ function Dailydraw() {
         <div className='contents shadow'>
           <MDBContainer fluid>
             <div className='content active-content'>
-              <p className='pt-4'>{`${state === 1 ? 'First' : state === 2 ? 'Second' : 'Third'} Draw`}</p>
+              <p className='pt-4'>{${state === 1 ? 'First' : state === 2 ? 'Second' : 'Third'} Draw}</p>
               <MDBRow className='justify-content-center'>
                 {renderNumbers(state)}
               </MDBRow>
