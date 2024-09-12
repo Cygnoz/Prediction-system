@@ -35,7 +35,7 @@ function Dailydraw() {
       const year = today.getFullYear().toString().slice(-2);
       const month = (today.getMonth() + 1).toString().padStart(2, '0');
       const day = today.getDate().toString().padStart(2, '0');
-      const todayStrFormatted = ${day}-${month}-${year};
+      const todayStrFormatted = `${day}-${month}-${year}`;
       setTodayStr(todayStrFormatted);
 
       // Check if today is one of the special dates
@@ -98,10 +98,10 @@ function Dailydraw() {
       <h2 className='mt-5 ms-4 fw-bold'>Draws</h2>
       <div className='tabs'>
         {[1, 2, 3].map((tabIndex) => (
-          <div key={tabIndex} className={tab-card ${state === tabIndex ? 'active-tab' : ''}} onClick={() => action(tabIndex)}>
+          <div key={tabIndex} className={`tab-card ${state === tabIndex ? 'active-tab' : ''}`} onClick={() => action(tabIndex)}>
             <div className='tab-body'>
-              <h3>{${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}}</h3>
-              <p>{${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}}</p>
+              <h3>{tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}</h3>
+              <p>{tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}</p>
               <p>{todayStr}</p>
             </div>
           </div>
@@ -112,7 +112,7 @@ function Dailydraw() {
         <div className='contents shadow'>
           <MDBContainer fluid>
             <div className='content active-content'>
-              <p className='pt-4'>{${state === 1 ? 'First' : state === 2 ? 'Second' : 'Third'} Draw}</p>
+              <p className='pt-4'>{state === 1 ? 'First' : state === 2 ? 'Second' : 'Third'} Draw</p>
               <MDBRow className='justify-content-center'>
                 {renderNumbers(state)}
               </MDBRow>
