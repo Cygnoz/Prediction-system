@@ -21,25 +21,32 @@ function Dailydraw() {
   const [noPrediction, setNoPrediction] = useState(false);
 
   useEffect(() => {
-    fetchPredictions();
+    const today = new Date();
+    const year = today.getFullYear().toString().slice(-2);
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    const todayStrFormatted = `${day}-${month}-${year}`;
+    setTodayStr(todayStrFormatted);
+
+    const storedPredictions = localStorage.getItem('predictions');
+    const storedDate = localStorage.getItem('todayStr');
+
+    if (storedPredictions && storedDate === todayStrFormatted) {
+      setPredictions(JSON.parse(storedPredictions));
+      setLoading(false);
+    } else {
+      fetchPredictions(todayStrFormatted);
+    }
   }, []);
 
-  const fetchPredictions = async () => {
+  const fetchPredictions = async (todayStrFormatted) => {
     setLoading(true);
     setError(null);
     setNoPrediction(false);
     try {
-      const today = new Date();
-      
-      // Format date as DD-MM-YY
-      const year = today.getFullYear().toString().slice(-2);
-      const month = (today.getMonth() + 1).toString().padStart(2, '0');
-      const day = today.getDate().toString().padStart(2, '0');
-      const todayStrFormatted = `${day}-${month}-${year}`;
-      setTodayStr(todayStrFormatted);
-
-      // Check if today is one of the special dates
-      if ((day === '15' && month === '08') || (day === '02' && month === '10') || (day === '26' && month === '01')) {
+      if ((todayStrFormatted.slice(0, 2) === '15' && todayStrFormatted.slice(3, 5) === '08') ||
+          (todayStrFormatted.slice(0, 2) === '02' && todayStrFormatted.slice(3, 5) === '10') ||
+          (todayStrFormatted.slice(0, 2) === '26' && todayStrFormatted.slice(3, 5) === '01')) {
         setNoPrediction(true);
         setLoading(false);
         return;
@@ -54,6 +61,14 @@ function Dailydraw() {
         2: Afternoon_Predictions,
         3: Evening_Predictions
       });
+
+      // Store data in localStorage
+      localStorage.setItem('predictions', JSON.stringify({
+        1: Morning_Predictions,
+        2: Afternoon_Predictions,
+        3: Evening_Predictions
+      }));
+      localStorage.setItem('todayStr', todayStrFormatted);
     } catch (err) {
       console.error('API Fetch Error:', err);
       setError('Failed to fetch predictions. Please try again later.');
