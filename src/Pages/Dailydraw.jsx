@@ -1,95 +1,100 @@
-import React, { useState, useEffect } from "react"
-import "./dailydraw.css"
-import { MDBContainer, MDBRow, MDBCol, MDBSpinner } from "mdb-react-ui-kit"
-import { GetPredictAPI } from "../services/allAPi"
+import React, { useState, useEffect } from 'react';
+import './dailydraw.css';
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBSpinner
+} from 'mdb-react-ui-kit';
+import { GetPredictAPI } from '../services/allAPi';
 
 function Dailydraw() {
-  const [state, setState] = useState(1)
+  const [state, setState] = useState(1);
   const [predictions, setPredictions] = useState({
     1: [],
     2: [],
-    3: [],
-  })
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [todayStr, setTodayStr] = useState("")
-  const [noPrediction, setNoPrediction] = useState(false)
+    3: []
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [todayStr, setTodayStr] = useState('');
+  const [noPrediction, setNoPrediction] = useState(false);
 
   useEffect(() => {
-    const today = new Date()
-    const year = today.getFullYear().toString().slice(-2)
-    const month = (today.getMonth() + 1).toString().padStart(2, "0")
-    const day = today.getDate().toString().padStart(2, "0")
-    const todayStrFormatted = `${day}-${month}-${year}`
-    setTodayStr(todayStrFormatted)
+    const today = new Date();
+    const year = today.getFullYear().toString().slice(-2);
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const day = today.getDate().toString().padStart(2, '0');
+    const todayStrFormatted = `${day}-${month}-${year}`;
+    setTodayStr(todayStrFormatted);
 
-    const storedPredictions = localStorage.getItem("predictions")
-    const storedDate = localStorage.getItem("todayStr")
+    const storedPredictions = localStorage.getItem('predictions');
+    const storedDate = localStorage.getItem('todayStr');
 
     if (storedPredictions && storedDate === todayStrFormatted) {
-      setPredictions(JSON.parse(storedPredictions))
-      setLoading(false)
+      setPredictions(JSON.parse(storedPredictions));
+      setLoading(false);
     } else {
-      fetchPredictions(todayStrFormatted)
+      fetchPredictions(todayStrFormatted);
     }
-  }, [])
+  }, []);
 
   const fetchPredictions = async (todayStrFormatted) => {
-    setLoading(true)
-    setError(null)
-    setNoPrediction(false)
+    setLoading(true);
+    setError(null);
+    setNoPrediction(false);
     try {
-      if ((todayStrFormatted.slice(0, 2) === "15" && todayStrFormatted.slice(3, 5) === "08") || (todayStrFormatted.slice(0, 2) === "02" && todayStrFormatted.slice(3, 5) === "10") || (todayStrFormatted.slice(0, 2) === "26" && todayStrFormatted.slice(3, 5) === "01")) {
-        setNoPrediction(true)
-        setLoading(false)
-        return
+      if ((todayStrFormatted.slice(0, 2) === '15' && todayStrFormatted.slice(3, 5) === '08') ||
+          (todayStrFormatted.slice(0, 2) === '02' && todayStrFormatted.slice(3, 5) === '10') ||
+          (todayStrFormatted.slice(0, 2) === '26' && todayStrFormatted.slice(3, 5) === '01')) {
+        setNoPrediction(true);
+        setLoading(false);
+        return;
       }
-      const response = await GetPredictAPI(todayStrFormatted)
-      console.log("API Response:", response)
-      const { Morning_Predictions, Afternoon_Predictions, Evening_Predictions } = response.data
-      console.log("Predictions:", response.data)
+  
+      const response = await GetPredictAPI(todayStrFormatted);
+      console.log('API Response:', response);
+      const { Morning_Predictions, Afternoon_Predictions, Evening_Predictions } = response.data;
+      console.log('Predictions:', response.data);
       setPredictions({
         1: Morning_Predictions,
         2: Afternoon_Predictions,
-        3: Evening_Predictions,
-      })
+        3: Evening_Predictions
+      });
 
       // Store data in localStorage
-      localStorage.setItem(
-        "predictions",
-        JSON.stringify({
-          1: Morning_Predictions,
-          2: Afternoon_Predictions,
-          3: Evening_Predictions,
-        })
-      )
-      localStorage.setItem("todayStr", todayStrFormatted)
+      localStorage.setItem('predictions', JSON.stringify({
+        1: Morning_Predictions,
+        2: Afternoon_Predictions,
+        3: Evening_Predictions
+      }));
+      localStorage.setItem('todayStr', todayStrFormatted);
     } catch (err) {
-      console.error("API Fetch Error:", err)
-      setError("Failed to fetch predictions. Please try again later.")
+      console.error('API Fetch Error:', err);
+      setError('Failed to fetch predictions. Please try again later.');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const action = (index) => {
-    setState(index)
+    setState(index);
   }
 
   const renderNumbers = (drawIndex) => {
     if (noPrediction) {
       return (
-        <MDBCol xs="12" className="no-prediction-message">
+        <MDBCol xs='12' className='no-prediction-message'>
           <p>No prediction today</p>
         </MDBCol>
-      )
+      );
     }
     return predictions[drawIndex].map((number, idx) => (
-      <MDBCol xs="4" sm="3" md="2" key={idx} className="number rounded-5">
+      <MDBCol xs='4' sm='3' md='2' key={idx} className='number rounded-5'>
         <p>{number}</p>
       </MDBCol>
-    ))
-  }
+    ));
+  };
 
   if (loading) {
     return (
@@ -100,36 +105,38 @@ function Dailydraw() {
   }
 
   if (error) {
-    return <div className="text-danger mt-5">{error}</div>
+    return <div className="text-danger mt-5">{error}</div>;
   }
 
   return (
     <div className="dailydraw-container">
-      <h2 className="mt-5 ms-4 fw-bold">Draws</h2>
-      <div className="tabs">
+      <h2 className='mt-5 ms-4 fw-bold'>Draws</h2>
+      <div className='tabs'>
         {[1, 2, 3].map((tabIndex) => (
-          <div key={tabIndex} className={`tab-card ${state === tabIndex ? "active-tab" : ""}`} onClick={() => action(tabIndex)}>
-            <div className="tab-body">
-              <h3>{`${tabIndex === 1 ? "First Draw" : tabIndex === 2 ? "Second Draw" : "Third Draw"}`}</h3>
-              <p>{`${tabIndex === 1 ? "1:00 pm" : tabIndex === 2 ? "6:00 pm" : "8:00 pm"}`}</p>
+          <div key={tabIndex} className={`tab-card ${state === tabIndex ? 'active-tab' : ''}`} onClick={() => action(tabIndex)}>
+            <div className='tab-body'>
+              <h3>{`${tabIndex === 1 ? 'First Draw' : tabIndex === 2 ? 'Second Draw' : 'Third Draw'}`}</h3>
+              <p>{`${tabIndex === 1 ? '1:00 pm' : tabIndex === 2 ? '6:00 pm' : '8:00 pm'}`}</p>
               <p>{todayStr}</p>
             </div>
           </div>
         ))}
       </div>
       <div className="prediction-container">
-        <h5 className="ms-4 mt-4">Predicted Lucky Numbers</h5>
-        <div className="contents shadow">
+        <h5 className='ms-4 mt-4'>Predicted Lucky Numbers</h5>
+        <div className='contents shadow'>
           <MDBContainer fluid>
-            <div className="content active-content">
-              <p className="pt-4">{`${state === 1 ? "First" : state === 2 ? "Second" : "Third"} Draw`}</p>
-              <MDBRow className="justify-content-center">{renderNumbers(state)}</MDBRow>
+            <div className='content active-content'>
+              <p className='pt-4'>{`${state === 1 ? 'First' : state === 2 ? 'Second' : 'Third'} Draw`}</p>
+              <MDBRow className='justify-content-center'>
+                {renderNumbers(state)}
+              </MDBRow>
             </div>
           </MDBContainer>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Dailydraw
+export default Dailydraw;
