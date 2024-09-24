@@ -90,3 +90,32 @@ h2, h5 {
     width: 500px; /* Adjust the width as needed */
   } 
 }
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.page-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.prev-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.next-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.page-info {
+  flex-grow: 1;
+  text-align: center;
+}
