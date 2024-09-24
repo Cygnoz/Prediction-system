@@ -22,6 +22,7 @@
   background-color: rgb(112, 112, 190);
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: ease-in-out 200ms;
 }
 .draw{
   cursor: pointer;
