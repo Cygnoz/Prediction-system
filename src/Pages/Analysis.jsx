@@ -39,18 +39,14 @@ function Analysis() {
   const [predictedData, setPredictedData] = useState([]);
   const [accuracyData, setAccuracyData] = useState(null);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
-    if (!draws.length) {
-      fetchDraws();
-    }
-    if (!predictedData.length) {
-      fetchPredictedData();
-    }
-    if (!accuracyData) {
-      fetchAccuracyData();
-    }
-  }, []);
+    fetchDraws();
+    fetchPredictedData();
+    fetchAccuracyData();
+  }, [state]);
 
   const fetchDraws = async () => {
     try {
@@ -121,6 +117,20 @@ function Analysis() {
 
   const firstDraw = draws.length > 0 ? draws[draws.length - 1] : null; // Get the latest draw
 
+  // Calculate the total number of pages
+  const totalPages = Math.ceil(draws.length / itemsPerPage);
+
+  // Calculate the data to display on the current page
+  const currentData = draws
+    .slice()
+    .reverse()
+    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+  // Handle page change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="Analysis">
       <ToastContainer />
@@ -152,19 +162,35 @@ function Analysis() {
                     </tr>
                   </thead>
                   <tbody>
-                    {draws
-                      .slice()
-                      .reverse()
-                      .map((draw, index) => (
-                        <tr key={index}>
-                          <td>{draw.date}</td>
-                          <td>{draw.morning !== null ? draw.morning : "N/A"}</td>
-                          <td>{draw.afternoon !== null ? draw.afternoon : "N/A"}</td>
-                          <td>{draw.evening !== null ? draw.evening : "N/A"}</td>
-                        </tr>
-                      ))}
+                    {currentData.map((draw, index) => (
+                      <tr key={index}>
+                        <td>{draw.date}</td>
+                        <td>{draw.morning !== null ? draw.morning : "N/A"}</td>
+                        <td>{draw.afternoon !== null ? draw.afternoon : "N/A"}</td>
+                        <td>{draw.evening !== null ? draw.evening : "N/A"}</td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
+              </div>
+              <div className="pagination">
+                <button
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="page-button prev-button"
+                >
+                  Previous
+                </button>
+                <span className="page-info">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="page-button next-button"
+                >
+                  Next
+                </button>
               </div>
             </MDBCardBody>
           </MDBCard>
