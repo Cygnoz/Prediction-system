@@ -249,7 +249,7 @@ function Analysis() {
                       <td>
                         {accuracyData ? (
                           <div className="accuracy-data">
-                            <p>{accuracyData.overall_accuracy}%</p>
+                            <p>{accuracyData.toFixed(2)}%</p>
                           </div>
                         ) : (
                           <p>No accuracy data available</p>
