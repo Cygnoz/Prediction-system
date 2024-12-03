@@ -433,14 +433,14 @@ function Analysis() {
                     </tr>
                   </thead>
                   <tbody>
-                    {currentData.map((draw, index) => (
-                      <tr key={index}>
-                        <td>{draw.date}</td>
-                        <td>{draw.morning !== null ? String(draw.morning).padStart(2,'0') : "N/A"}</td>
-                        <td>{draw.afternoon !== null ? String(draw.morning).padStart(2,'0') : "N/A"}</td>
-                        <td>{draw.evening !== null ? String(draw.morning).padStart(2,'0') : "N/A"}</td>
-                      </tr>
-                    ))}
+                  {currentData.map((draw, index) => (
+                    <tr key={index}>
+                      <td>{draw.date.padStart(2, '0')}</td>
+                      <td>{draw.morning !== null ? draw.morning.toString().padStart(2, '0') : "N/A"}</td>
+                      <td>{draw.afternoon !== null ? draw.afternoon.toString().padStart(2, '0') : "N/A"}</td>
+                      <td>{draw.evening !== null ? draw.evening.toString().padStart(2, '0') : "N/A"}</td>
+                    </tr>
+                  ))}
                   </tbody>
                 </table>
               </div>
